@@ -1,4 +1,4 @@
-Exec = main
+Exec = dcompile
 OPTS = -O3 -pthread -g
 
 objects := $(patsubst %.c,%.o,$(wildcard *.c))

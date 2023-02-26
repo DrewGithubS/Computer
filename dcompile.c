@@ -44,14 +44,15 @@ int main(int argc, char ** argv) {
 	}
 
 	FILE * inFile = fopen(inputFile, "r");
-	FILE * outFile = fopen(outputFile, "wb");
-
-	if(!inFile) {
+	if(inFile == 0) {
 		printf("Could not find input file: %s\n", inputFile);
+		return 1;
 	}
 
-	if(!outFile) {
+	FILE * outFile = fopen(outputFile, "wb");
+	if(outFile == 0) {
 		printf("Could not find output file: %s\n", outputFile);
+		return 1;
 	}
 
 	compile(inFile, outFile);
@@ -64,6 +65,6 @@ void compile(FILE * inFile, FILE * outFile) {
 	uint32_t read;
 
 	while ((read = getline(&line, &len, inFile)) != -1) {
-		
+
 	}
 }
