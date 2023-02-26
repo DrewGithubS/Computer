@@ -57,15 +57,13 @@ int main(int argc, char ** argv) {
 	compile(inFile, outFile);
 }
 
-
-
-
+#define MAXLINESIZE (500)
 void compile(FILE * inFile, FILE * outFile) {
-	char * line = (char *) malloc(500 * sizeof(char));
-	size_t len = 500;
+	char * line = (char *) malloc(MAXLINESIZE * sizeof(char));
+	size_t len = MAXLINESIZE;
 	uint32_t read;
 
 	while ((read = getline(&line, &len, inFile)) != -1) {
-
+		
 	}
 }
