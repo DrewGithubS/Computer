@@ -15,6 +15,7 @@ void printHelp() {
 int main(int argc, char ** argv) {
 	int opt;
 	char * inputFile = 0;
+	char * verboseFile = 0;
 	char * outputFile = 0;
       
     // put ':' in the starting of the
@@ -27,6 +28,9 @@ int main(int argc, char ** argv) {
 			break;
 		case 'o':
 			outputFile = optarg;
+			break;
+		case 'v':
+			verboseFile = optarg;
 			break;
 		case ':': 
 			printf("Option needs a value\n"); 
@@ -51,15 +55,24 @@ int main(int argc, char ** argv) {
 
 	FILE * outFile = fopen(outputFile, "wb");
 	if(outFile == 0) {
-		printf("Could not find output file: %s\n", outputFile);
+		printf("Could not open output file: %s\n", outputFile);
 		return 1;
 	}
 
-	compile(inFile, outFile);
+	FILE * verbFile = 0;
+	if(verboseFile != 0) {
+		verbFile = fopen(verboseFile, "w");
+		if(verbFile == 0) {
+			printf("Could not open verbose file: %s\n", verboseFile);
+			return 1;
+		}
+	}
+
+	compile(inFile, outFile, verbFile);
 }
 
 #define MAXLINESIZE (500)
-void compile(FILE * inFile, FILE * outFile) {
+void compile(FILE * inFile, FILE * outFile, FILE * verboseFile) {
 	char * line = (char *) malloc(MAXLINESIZE * sizeof(char));
 	size_t len = MAXLINESIZE;
 	uint32_t read;
