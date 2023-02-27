@@ -11,6 +11,20 @@ typedef enum {
 	BasicCommandCount
 } BasicCommandEnum;
 
+typedef struct {
+	BasicCommandEnum commandNum;
+	char * string;
+} Command;
+
+Command instructionSet[CommandCount] = {
+	{ADD, "add"},
+	{DIV, "div"},
+	{MULT, "mult"},
+	{PRINT_BASIC, "print"},
+	{SET, "set"},
+	{SUB, "sub"}
+};
+
 typedef enum {
 	ADD8,
 	ADD16,
@@ -474,6 +488,10 @@ typedef struct {
 
 typedef struct {
 	CommandEnum command;
+	RegisterNum reg1;
+	RegisterNum reg2;
+	RegisterNum reg3;
+	RegisterNum reg4;
 } Instruction;
 
 Register registers[] = {
