@@ -1,0 +1,3 @@
+Create architecture file that contains registers instead of hard-coding
+
+Create a cross-compile-like compiler.
