@@ -95,7 +95,7 @@ int main() {
 						repChars[j],
 						k,
 						l,
-						regType[i],
+						regType[j],
 						repChars[i],
 						repChars[j],
 						k,

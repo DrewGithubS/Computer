@@ -11,6 +11,8 @@ typedef enum {
 } RegisterType;
 
 typedef enum {
+	NOREG,
+
 	// (E)ight bit registers
 	e0,
 	e1,
@@ -412,7 +414,7 @@ typedef enum {
 	we1_30,
 	we1_31,
 
-	REGISTERCOUNT
+	RegisterCount
 } RegisterNum;
 
 #endif

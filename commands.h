@@ -1,6 +1,8 @@
 #ifndef COMMANDS_H
 #define COMMANDS_H
 
-int parseLine(char * line);
+#include "instruction_structs.h"
+
+int parseLine(char * line, FullInstruction * instruction);
 
 #endif

@@ -1,15 +1,7 @@
 #ifndef INSTRUCTION_ENUMS_H
 #define INSTRUCTION_ENUMS_H
 
-typedef enum {
-	ADD,
-	DIV,
-	MULT,
-	PRINT,
-	SET,
-	SUB,
-	BasicCommandCount
-} BasicCommandEnum;
+#define MAX_REG_PER_INSTRUCTION (3)
 
 typedef enum {
 	ADD8,
@@ -34,6 +26,11 @@ typedef enum {
 	MULT256,
 
 	PRINT8,
+	PRINT16,
+	PRINT32,
+	PRINT64,
+	PRINT128,
+	PRINT256,
 
 	SET8,
 	SET16,
@@ -51,5 +48,15 @@ typedef enum {
 
 	CommandCount
 } CommandEnum;
+
+typedef enum {
+	ADD = ADD8,
+	DIV = DIV8,
+	MULT = MULT8,
+	PRINT = PRINT8,
+	SET = SET8,
+	SUB = SUB8,
+	BasicCommandCount
+} BasicCommandEnum;
 
 #endif
