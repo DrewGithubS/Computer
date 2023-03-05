@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include <unistd.h>
 
+#include "commands.h"
+#include "error_codes.h"
+
 // The format of each instruction is below:
 // <command> <argument1> <argument2> <argument3> ...
 
@@ -71,13 +74,27 @@ int main(int argc, char ** argv) {
 	compile(inFile, outFile, verbFile);
 }
 
+int handleError(int errorCode, int lineNumber) {
+	switch(errorCode) {
+	case UNKNOWN_COMMAND_ERROR:
+		printf("Unknown command on line %d.\n", lineNumber);
+		return 1;
+
+	}
+
+	return 0;
+}
+
 #define MAXLINESIZE (500)
 void compile(FILE * inFile, FILE * outFile, FILE * verboseFile) {
 	char * line = (char *) malloc(MAXLINESIZE * sizeof(char));
 	size_t len = MAXLINESIZE;
 	uint32_t read;
 
-	while ((read = getline(&line, &len, inFile)) != -1) {
+	int lineNumber = 0;
 
+	while ((read = getline(&line, &len, inFile)) != -1) {
+		lineNumber++;
+		handleError(parseLine(line), lineNumber);
 	}
 }
