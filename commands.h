@@ -1,3 +1,6 @@
-#include "instruction.h"
+#ifndef COMMANDS_H
+#define COMMANDS_H
 
-void parseLine(char * line);
+int parseLine(char * line);
+
+#endif
