@@ -5,6 +5,11 @@
 #include "register_structs.h"
 
 typedef struct {
+	CommandEnum command;
+	RegisterNum regs[MAX_REG_PER_INSTRUCTION];
+} FullInstruction;
+
+typedef struct {
 	BasicCommandEnum commandNum;
 	char * string;
 } Command;

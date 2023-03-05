@@ -79,10 +79,15 @@ int handleError(int errorCode, int lineNumber) {
 	case UNKNOWN_COMMAND_ERROR:
 		printf("Unknown command on line %d.\n", lineNumber);
 		return 1;
-
+	case UNKNOWN_REGISTER_ERROR:
+		printf("Unknown register on line %d.\n", lineNumber);
+		return 1;
+	case REGISTER_TYPES_MATCHING:
+		printf("Register types don't match on line %d.\n", lineNumber);
+		return 1;
+	default:
+		return 0;
 	}
-
-	return 0;
 }
 
 #define MAXLINESIZE (500)
@@ -93,8 +98,11 @@ void compile(FILE * inFile, FILE * outFile, FILE * verboseFile) {
 
 	int lineNumber = 0;
 
-	while ((read = getline(&line, &len, inFile)) != -1) {
+	FullInstruction instruction;
+
+	while((read = getline(&line, &len, inFile)) != -1) {
 		lineNumber++;
-		handleError(parseLine(line), lineNumber);
+		handleError(parseLine(line, &instruction), lineNumber);
+		fwrite(&instruction, sizeof(FullInstruction), 1, outFile);
 	}
 }
