@@ -5,7 +5,7 @@ typedef enum {
 	ADD,
 	DIV,
 	MULT,
-	PRINT_BASIC,
+	PRINT,
 	SET,
 	SUB,
 	BasicCommandCount
@@ -15,15 +15,6 @@ typedef struct {
 	BasicCommandEnum commandNum;
 	char * string;
 } Command;
-
-Command instructionSet[CommandCount] = {
-	{ADD, "add"},
-	{DIV, "div"},
-	{MULT, "mult"},
-	{PRINT_BASIC, "print"},
-	{SET, "set"},
-	{SUB, "sub"}
-};
 
 typedef enum {
 	ADD8,
@@ -47,7 +38,7 @@ typedef enum {
 	MULT128,
 	MULT256,
 
-	PRINT,
+	PRINT8,
 
 	SET8,
 	SET16,
@@ -65,6 +56,15 @@ typedef enum {
 
 	CommandCount
 } CommandEnum;
+
+Command instructionSet[CommandCount] = {
+	{ADD, "add"},
+	{DIV, "div"},
+	{MULT, "mult"},
+	{PRINT, "print"},
+	{SET, "set"},
+	{SUB, "sub"}
+};
 
 typedef enum {
 	EightBit,

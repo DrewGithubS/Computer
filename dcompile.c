@@ -6,7 +6,7 @@
 // The format of each instruction is below:
 // <command> <argument1> <argument2> <argument3> ...
 
-void compile(FILE * inFile, FILE * outFile);
+void compile(FILE * inFile, FILE * outFile, FILE * verbFile);
 
 void printHelp() {
 	printf("Usage: ./dcompile -i <input file> -o <output file>\n");
